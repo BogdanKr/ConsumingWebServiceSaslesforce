@@ -23,7 +23,7 @@ public with sharing class AccessToTrailheadOrg {
         HttpResponse hresp = h.send(req);
         responseWrapper wResp = (responseWrapper) JSON.deserialize(hresp.getBody(), responseWrapper.class);
         System.debug('Instance_url  ' + wResp.instance_url);
-        
+
         return wResp.access_token;
     }
 }
