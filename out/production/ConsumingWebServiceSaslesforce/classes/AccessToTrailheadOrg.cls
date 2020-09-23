@@ -14,7 +14,8 @@ public with sharing class AccessToTrailheadOrg {
         public String instance_url;
     }
     public static String getRequestToken() {
-        String reqBody = 'grant_type=password&client_id=' + cKey + '&client_secret=' + cSecret + '&username=' + uName + '&password=' + passwd;
+        String reqBody = 'grant_type=password&client_id=' + cKey + '&client_secret='
+                + cSecret + '&username=' + uName + '&password=' + passwd;
         Http h = new Http();
         HttpRequest req = new HttpRequest();
         req.setBody(reqBody);

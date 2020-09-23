@@ -10,8 +10,6 @@ public with sharing class AccountCallout {
         request.setEndpoint('https://cunning-fox-2asnae-dev-ed.my.salesforce.com/services/apexrest/Accounts/' + accountId);
 //        request.setEndpoint('https://cunning-fox-2asnae-dev-ed.my.salesforce.com/services/data/v49.0/sobjects/account/' + accountId);
         request.setMethod('GET');
-
-
         HttpResponse response = http.send(request);
         System.debug('StatusCode: ' + response.getStatusCode());
         Account thisAccount = (Account) JSON.deserialize(response.getBody(), Account.class);
@@ -36,7 +34,6 @@ public with sharing class AccountCallout {
         HttpResponse response = http.send(request);
         System.debug(response.getStatusCode());
 
-        // Parse the JSON response
         if (response.getStatusCode() != 200) {
             System.debug('The status code returned was not expected: ' +
                     response.getStatusCode() + ' ' + response.getStatus());
@@ -68,15 +65,8 @@ public with sharing class AccountCallout {
         request.setBody('{"id":"' + id + '","name":"' + name +
                 '","phone":"' + phone + '", "website":"' + website + '"}');
         HttpResponse response = http.send(request);
-        System.debug(response.getStatusCode());
+        System.debug(response);
 
-        // Parse the JSON response
-        if (response.getStatusCode() != 200) {
-            System.debug('The status code returned was not expected: ' +
-                    response.getStatusCode() + ' ' + response.getStatus());
-        } else {
-            System.debug(response.getBody());
-        }
         return response;
     }
 
@@ -90,15 +80,8 @@ public with sharing class AccountCallout {
         request.setBody('{"name":"' + name +
                 '","phone":"' + phone + '", "website":"' + website + '"}');
         HttpResponse response = http.send(request);
-        System.debug(response.getStatusCode());
+        System.debug(response);
 
-        // Parse the JSON response
-        if (response.getStatusCode() != 200) {
-            System.debug('The status code returned was not expected: ' +
-                    response.getStatusCode() + ' ' + response.getStatus());
-        } else {
-            System.debug(response.getBody());
-        }
         return response;
     }
 }
